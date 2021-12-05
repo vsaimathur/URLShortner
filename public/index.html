@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form>
+        <input type="text" name="longurl" id="longurlfield" />
+        <button id="gen-button">Shrink URL</button>
+        <input type="text" name="shorturl" id="shorturlfield" />
+        <button id="copy-btn">Copy</button>
+
+        </div>
+    </form>
+    <script>
+        //server URL
+        const serverURL = `http://localhost:5000`
+
+        //elements
+        const longURLElement = document.querySelector('#longurlfield');
+        const shortURLElement = document.querySelector('#shorturlfield');
+        const genBtnElement = document.querySelector('#gen-button');
+        const copyBtnElement = document.querySelector('#copy-btn');
+        //methods
+        const postLongURL = async (longURL) => {
+            const longURLObj = {
+                url: longURL
+            }
+            try {
+                const response = await fetch(`${serverURL}/newURL`, {
+                    method: "POST",
+                    body: JSON.stringify(longURLObj),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                });
+                const data = await response.json();
+                if (response.ok && response.status === 200) {
+                    return data.data.shortURL;
+                } else {
+                    return "URL Not Valid";
+                }
+            } catch (err) {
+                console.log(err);
+                alert('Something went wrong!, please try again later');
+            }
+        }
+
+        //logic
+        genBtnElement.addEventListener('click', async (event) => {
+            event.preventDefault();
+            const shortURL = await postLongURL(longURLElement.value);
+            // console.log(shortURL);
+            //setting shortURL to text field dynamically
+            shortURLElement.value = shortURL;
+        })
+
+        //copy button logic to copy text in element.
+        copyBtnElement.addEventListener("click", (event) => {
+            event.preventDefault();
+            shortURLElement.select();
+            // shortURLElement.setSelectionRange(0, 99999); /*For mobile devices*/
+            document.execCommand("copy");
+        });
+    </script>
+</body>
+
+</html>
