@@ -9,7 +9,13 @@ const URL = require('./models/urlSchema');
 const commonNamesList = require('./dataset/commonNamesList');
 
 //server config
-const serverURL = 'http://localhost:5000';
+let serverURL;
+if(process.env.NODE_ENV == "production") {
+    serverURL = 'https://short-url-common.herokuapp.com';
+}
+else {
+    serverURL = 'http://localhost:5000';
+}
 const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
