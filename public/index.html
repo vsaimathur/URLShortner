@@ -7,7 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Short URL Common</title>
     <style type="text/css">
-        form{
+
+        :root {
+            height: 100vh;
+        }
+        
+        form {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -15,35 +20,39 @@
 
 
         }
-        input{
-            padding: 50px ;
+
+        input {
+            padding: 50px;
             width: 30vw;
             background-color: blueviolet;
             font-size: 15px;
             color: white;
         }
+
         body {
-          background-image: url("https://images.hdqwalls.com/download/city-rain-blur-bokeh-effect-7w-1366x768.jpg");
-          background-repeat: no-repeat;
-          background-attachment: fixed;
-          height: 100%;
-          width: 100%;
+            background-image: url("https://images.hdqwalls.com/download/city-rain-blur-bokeh-effect-7w-1366x768.jpg");
+            background-repeat: no-repeat;
+            /* background-size: contain; */
+            background-position: center;
+            max-width: 100%;
+            height: auto;
         }
     </style>
 </head>
 
 <body>
-     <p style="font-size: 50px; text-align: center; font-family: sans-serif; color: moccasin;"><b><u>SHORTCURL</b></u></p>
+    <p style="font-size: 50px; text-align: center; font-family: sans-serif; color: moccasin;"><b><u>SHORTCURL</b></u>
+    </p>
     <form>
         <div class="parent">
             <div class="child1">
-        <input type="text" name="longurl" id="longurlfield" />
-        <button id="gen-button" style="width: 100px; height: 50px; background-color: aqua; ">Shrink URL</button>
-        </div>
-        <div class="child2">
-        <input type="text" name="shorturl" id="shorturlfield" />
-        <button id="copy-btn" style="width: 100px; height: 50px; background-color: aqua;">Copy</button>
-        </div>
+                <input type="text" name="longurl" id="longurlfield" />
+                <button id="gen-button" style="width: 100px; height: 50px; background-color: aqua; ">Shrink URL</button>
+            </div>
+            <div class="child2">
+                <input type="text" name="shorturl" id="shorturlfield" />
+                <button id="copy-btn" style="width: 100px; height: 50px; background-color: aqua;">Copy</button>
+            </div>
         </div>
     </form>
     <script>
@@ -99,4 +108,5 @@
         });
     </script>
 </body>
+
 </html>
