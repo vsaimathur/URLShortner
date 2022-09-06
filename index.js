@@ -11,7 +11,7 @@ const commonNamesList = require('./dataset/commonNamesList');
 //server config
 let serverURL;
 if(process.env.NODE_ENV == "production") {
-    serverURL = 'https://short-curl.herokuapp.com';
+    serverURL = 'https:/shorturl.vsaimathur.xyz';
 }
 else {
     serverURL = 'http://localhost:5000';
